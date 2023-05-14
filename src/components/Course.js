@@ -11,17 +11,17 @@ import {
     Container
 } from "reactstrap";
 
-const Course=()=>{
+const Course=({course})=>{
     return (
-        <Card>
+        <Card className='text-center'>
             <CardBody>
-                <CardSubtitle>
-                    Java Course
+                <CardSubtitle className="font-weight-bold">
+                    {course.title}
                 </CardSubtitle>
-                <CardText>It is a Java Course for Learners</CardText>
-                <Container>
-                <Button>Delete</Button>
-                    <Button>Update</Button>
+                <CardText>{course.discription}</CardText>
+                <Container >
+                <Button color="danger">Delete</Button>
+                    <Button color='warning ml-3'>Update</Button>
                 </Container>
             </CardBody>
         </Card>

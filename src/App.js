@@ -1,32 +1,45 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
+import Menu from './components/Menu';
+import { Container ,Row, Col } from 'reactstrap';
+import { ToastContainer, } from "react-toastify"; 
+import Jumbotron from './components/Jumbotron';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AddCourse from './components/AddCourse';
 import AllCourses from './components/AllCourses';
-import Course from './components/Course';
-import { Button } from 'reactstrap';
-import { ToastContainer, toast } from "react-toastify"; 
-import Allcourses from './components/AllCourses';
 
 function App(){
 
-  const btnHandle=()=>
-  {
-    toast.success("done", {
-      position:"top-center"
-    })
-  }
+  // const btnHandle=()=>
+  // {
+  //   toast.success("done", {
+  //     position:"top-center"
+  //   })
+  // }
 
   return (
-    <div className='text-center'>
+    <div>
     
-      <ToastContainer />
-      <Header name="Arjun" title="1"/>
-        <h1>This is My React Project </h1>
-      <Header name="Arpit" title="2"/>
-        <h2>One Way</h2>
-      <Button color='warning' size='lg' onClick={btnHandle}>First React Button</Button> 
-      <Allcourses />
-      
+      <Router>
+        <ToastContainer />
+        <Header />
+        <Container >
+          
+          <Row>
+            <Col md={4}>
+                <Menu/>
+            </Col>
+            <Col md={8}>
+            <Routes>
+              <Route path="/" element={<Jumbotron />} />
+              <Route path="/add-course" element={<AddCourse />} />
+              <Route path="/view-courses" element={<AllCourses/>} />
+          </Routes>
+            </Col>
+          </Row>
+        </Container>
+      </Router>
     </div>
   );
 }
